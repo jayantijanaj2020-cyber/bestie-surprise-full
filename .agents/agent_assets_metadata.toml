@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "Fo3qHQezv2uexfPFkYSXG"
+uri = "file://bestie-surprise.tar.gz"
+type = "unspecified"
+title = "Bestie Surprise — Project Files"

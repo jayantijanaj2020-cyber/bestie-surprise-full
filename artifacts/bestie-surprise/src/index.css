@@ -1,0 +1,190 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --font-sans: var(--app-font-sans);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: 10 100% 97%;
+  --foreground: 340 25% 25%;
+  --border: 10 60% 88%;
+  --input: 10 60% 88%;
+  --ring: 340 60% 75%;
+  --card: 10 100% 99%;
+  --card-foreground: 340 25% 25%;
+  --primary: 340 65% 72%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 20 80% 90%;
+  --secondary-foreground: 340 25% 30%;
+  --muted: 15 60% 93%;
+  --muted-foreground: 340 20% 55%;
+  --accent: 350 80% 85%;
+  --accent-foreground: 340 30% 25%;
+  --destructive: 0 84% 60%;
+  --app-font-sans: 'Georgia', 'Times New Roman', serif;
+  --radius: 1.25rem;
+}
+
+@layer base {
+  * {
+    @apply border-border box-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--app-font-sans);
+  }
+}
+
+/* Page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(30px) scale(0.97);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.page-exit {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-30px) scale(0.97);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Cat idle animation */
+@keyframes catBreathe {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.03); }
+}
+
+@keyframes catTailWag {
+  0%, 100% { transform: rotate(-20deg); }
+  50% { transform: rotate(20deg); }
+}
+
+@keyframes catEarWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+@keyframes blushPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-120px) rotate(15deg); opacity: 0; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.1) rotate(3deg); opacity: 1; }
+  80% { transform: scale(0.95) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes heartFloat {
+  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+  100% { transform: translateY(-90px) rotate(20deg) scale(0.5); opacity: 0; }
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.3; }
+}
+
+@keyframes textFadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes titlePop {
+  0% { opacity: 0; transform: scale(0.8); }
+  70% { transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes catGive {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-10px) rotate(-5deg); }
+  50% { transform: translateX(15px) rotate(8deg); }
+  70% { transform: translateX(-5px) rotate(-3deg); }
+  100% { transform: translateX(0) rotate(0); }
+}
+
+@keyframes bouquetReveal {
+  0% { transform: translate(40px, 30px) scale(0) rotate(-30deg); opacity: 0; }
+  60% { transform: translate(-5px, -5px) scale(1.1) rotate(5deg); opacity: 1; }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes paw {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(10deg); }
+}
+
+.cat-breathe { animation: catBreathe 3s ease-in-out infinite; }
+.cat-tail { animation: catTailWag 2s ease-in-out infinite; transform-origin: top center; }
+.cat-ear { animation: catEarWiggle 4s ease-in-out infinite; transform-origin: bottom center; }
+.blush { animation: blushPulse 2.5s ease-in-out infinite; }
+.cat-give { animation: catGive 0.8s ease-in-out forwards; }
+.bouquet-appear { animation: bouquetReveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.text-appear { animation: textFadeIn 0.8s ease forwards; }
+.title-pop { animation: titlePop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+/* Button style */
+.btn-primary {
+  background: hsl(var(--primary));
+  color: white;
+  padding: 0.75rem 2.5rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 4px 20px rgba(200, 100, 130, 0.25);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(200, 100, 130, 0.35);
+  background: hsl(340, 70%, 68%);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
